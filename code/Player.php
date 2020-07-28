@@ -21,7 +21,7 @@ class Player
         $this->deck = $deck;
     }
 
-    public function hit()
+    public function hit(Blackjack ): void
     {
 
     }
