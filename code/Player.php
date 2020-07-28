@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 class Player
 {
@@ -25,20 +26,24 @@ class Player
 
     }
 
-    public function surrender()
+    //set lost to true
+    public function surrender(): void
     {
-
+        $this->hasLost(true);
     }
 
     public function getScore()
     {
 
     }
-
-    public function hasLost()
+    //get lost property
+    public function hasLost(): bool
     {
-
+        return $this->lost;
     }
+
+
+
 }
 
 class Dealer extends Player
