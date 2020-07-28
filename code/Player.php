@@ -1,44 +1,46 @@
 <?php
 
-/**
- * Player class
- *
- * properties:
- * cards (array)
- * lost (bool = false)
- *
- * empty methods
- * hits
- * surrender
- * getScore
- * hasLost
- */
-
 class Player
 {
-   // private cards = [];
-    private $lost = false;
-    private $hits;
-    private $surrender;
-    private $getScore;
-    private $hasLost;
- /**
- * Player constructor.
- * @param bool $lost
- * @param $hits
- * @param $surrender
- * @param $getScore
- * @param $hasLost
- */
- public function __construct($lost, $hits, $surrender, $getScore, $hasLost)
-{
-    $this->lost = $lost;
-    $this->hits = $hits;
-    $this->surrender = $surrender;
-    $this->getScore = $getScore;
-    $this->hasLost = $hasLost;
+    const PLAYER_LIMIT = 21;
+    private array $cards = [];
+    private bool $lost = false;
+
+    //Draw two cards
+    public function __construct(deck $deck)
+    {
+        $this->cards[] = $deck->drawCard();
+        $this->cards[] = $deck->drawCard();
+
+        $deck = new Deck();
+        $deck->shuffle();
+
+        $this->player = new Player($deck);
+        $this->dealer = new Dealer($deck);
+        $this->deck = $deck;
+    }
+
+    public function hit()
+    {
+
+    }
+
+    public function surrender()
+    {
+
+    }
+
+    public function getScore()
+    {
+
+    }
+
+    public function hasLost()
+    {
+
+    }
 }
 
-
+class Dealer extends Player{
+    
 }
-

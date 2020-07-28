@@ -1,18 +1,6 @@
 <?php
 
-/**
- * class blackjack
- *
- * properties:
- *
- * private { player, dealer, deck }
- *
- * publicmethods:
- * getPLayer()
- * getDealer()
- */
-
-class Blackjack extends Player
+class Blackjack
 {
     private $player;
     private $dealer;
@@ -24,30 +12,23 @@ class Blackjack extends Player
      * @param $dealer
      * @param $deck
      */
-    public function __construct($player, $dealer, $deck)
+    public function __construct()
     {
-        $this->player = $player;
-        $this->dealer = $dealer;
+        $deck = new Deck();
+        $deck->shuffle();
+
+        $this->player = new Player($deck);
+        $this->dealer = new Dealer($deck);
         $this->deck = $deck;
     }
 
-    /**
-     * @return mixed
-     */
     public function getPlayer()
     {
         return $this->player;
     }
 
-
-    /**
-     * @return mixed
-     */
     public function getDealer()
     {
         return $this->dealer;
     }
-
-
-
 }
