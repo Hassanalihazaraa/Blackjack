@@ -33,14 +33,14 @@ class Player
         }
     }
 
-    public function getCard(): array
+    public function getCards(): array
     {
         return $this->cards;
     }
 
     public function setCard(Card $card): array
     {
-        $this->cards[] = [$card->getUnicodeCharacter(true), $card->getValue()];
+        $this->cards[] = $card;
         return $this->cards;
     }
 
@@ -48,7 +48,7 @@ class Player
     //Surrender
     public function surrender(): void
     {
-        $this->hasLost(true);
+        $this->setLost(true);
     }
 
     //player score
