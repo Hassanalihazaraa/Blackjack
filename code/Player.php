@@ -1,5 +1,8 @@
 <?php
-//declare(strict_types=1);
+declare(strict_types=1);
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 
 class Player
 {
@@ -14,6 +17,7 @@ class Player
         $this->cards[] = $deck->drawCard();
     }
 
+    //hit method
     public function hit(Blackjack $game): void
     {
         $deck = $game->getDeck();
@@ -38,11 +42,13 @@ class Player
         $this->lost = $lost;
     }
 
+    //getting cards from the player
     public function getCards(): array
     {
         return $this->cards;
     }
 
+    //setting card from the Card class
     public function setCard(Card $card): array
     {
         $this->cards[] = $card;//[$card->getUnicodeCharacter(true), $card->getValue()];
@@ -69,11 +75,12 @@ class Player
 
 }
 
-//Dealer
+//Dealer class
 class Dealer extends Player
 {
     const DEALER_LIMIT = 15;
 
+    //getting the dealer score when hit
     public function hit(Blackjack $game): void
     {
         while($this->getScore() > self::DEALER_LIMIT) {
