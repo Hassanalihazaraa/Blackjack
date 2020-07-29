@@ -42,4 +42,11 @@ class Blackjack
     {
         $this->deck = $deck;
     }
+
+    public function gameplay(): void
+    {
+        //if (){
+
+        //}
+    }
 }

@@ -73,9 +73,16 @@ class Player
         $this->lost = $lost;
     }
 }
-
+//Dealer
 class Dealer extends Player
 {
     const DEALER_LIMIT = 15;
+
+    public function hit(Blackjack $game): void
+    {
+        if ($this->getScore() > self::DEALER_LIMIT) {
+            parent::hit($game);
+        }
+    }
 
 }

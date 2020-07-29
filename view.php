@@ -9,11 +9,36 @@ declare(strict_types=1);
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
+<div class="container-fluid">
+    <div class="card-deck">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Player</h5>
+                <?php
+                
+                foreach ($) {
 
+                }
+                ?>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dealer</h5>
+                <?php
+                foreach () {
+
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+</div>
 <form class="text-center mt-5" method="post" action="">
-    <button class="btn btn-info" name="button" value="hit" type="submit">New game</button>
-    <button class="btn btn-danger" name="button" value="stand" type="submit">Stand</button>
-    <button class="btn btn-success" name="button" value="surrender" type="submit">Surrender</button>
+    <button class="btn btn-info" name="newgame" value="new game" type="submit">New game</button>
+    <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
+    <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>
+    <button class="btn btn-success" name="surrender" value="surrender" type="submit">Surrender</button>
 </form>
 
 <!-- Latest compiled and minified JavaScript -->
