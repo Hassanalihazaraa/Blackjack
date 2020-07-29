@@ -14,13 +14,20 @@ declare(strict_types=1);
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Player</h5>
+                //foreach () {
 
+                //}
+                ?>
             </div>
         </div>
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Dealer</h5>
-               
+                <?php
+                // foreach () {
+
+                //}
+                ?>
             </div>
         </div>
     </div>

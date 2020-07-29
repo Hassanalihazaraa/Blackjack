@@ -8,12 +8,12 @@ class Player
     private bool $lost = false;
 
     //Draw two cards
-    public function __construct(deck $deck)
+    public function __construct(Deck $deck)
     {
         $this->cards[] = $deck->drawCard();
         $this->cards[] = $deck->drawCard();
         /*
-        $deck = new Deck();
+        $deck = new Deck.class();
         $deck->shuffle();
 
         $this->player = new Player($deck);
@@ -54,9 +54,8 @@ class Player
     //player score
     public function getScore(): int
     {
-        $playerCards = $this->getCards();
         $score = 0;
-        foreach ($playerCards as $playerCard) {
+        foreach ($this->getCards() as $playerCard) {
             $score += $playerCard->getValue();
         }
         return $score;

@@ -6,7 +6,7 @@ class Card
     private const ACE_VALUE = 11;
     private const FACE_VALUE = 10;
 
-    /** @var Suit */
+    /** @var class */
     private $suit;
 
     /** @var int */

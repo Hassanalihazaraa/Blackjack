@@ -1,39 +1,35 @@
 <?php
 declare(strict_types=1);
 
-require_once './code/Player.php';
-require_once './code/Blackjack.php';
-require_once './code/Deck.php';
-require_once './code/Card.php';
-require_once './code/Suit.php';
+require_once 'autoload/autoloader.php';
 
 session_start();
 
-if (!isset($_SESSION['Blackjack'])) {
+if (!isset($_SESSION['Blackjack.class'])) {
     $game = new Blackjack();
-    $_SESSION['Blackjack'] = serialize($game);
+    $_SESSION['Blackjack.class'] = serialize($game);
 } else {
-    $game = unserialize($_SESSION['Blackjack'], [Blackjack::class]);
+    $game = unserialize($_SESSION['Blackjack.class'], [Blackjack::class]);
 }
 //player
 if (isset($_POST['hit'])) {
     $game->getPlayer()->hit($game);
-    $_SESSION['Blackjack'] = serialize($game);
+    $_SESSION['Blackjack.class'] = serialize($game);
     if ($game->getPlayer()->hasLost()) {
-        unset($_SESSION['Blackjack']);
+        unset($_SESSION['Blackjack.class']);
     }
 }
 //dealer
 if (isset($_POST['stand'])) {
     $game->getDealer()->hit($game);
-    $_SESSION['Blackjack'] = serialize($game);
+    $_SESSION['Blackjack.class'] = serialize($game);
     if ($game->getDealer()->hasLost()) {
-        unset($_SESSION['Blackjack']);
+        unset($_SESSION['Blackjack.class']);
     }
 }
 //surrender
 
 
-require_once 'view.php';
+require 'view.php';
 
 

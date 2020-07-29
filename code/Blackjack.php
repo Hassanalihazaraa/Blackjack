@@ -8,7 +8,7 @@ class Blackjack
     private $deck;
 
     /**
-     * Blackjack constructor.
+     * Blackjack.class constructor.
      * @param $player
      * @param $dealer
      * @param $deck

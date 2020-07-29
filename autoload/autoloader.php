@@ -5,13 +5,14 @@ spl_autoload_register('autoLoader');
 
 function autoLoader($className)
 {
-    $path = 'code/';
+    $path = 'blackjack/code/';
     $extension = '.php';
     $fullPath = $path . $className . $extension;
 
-    if (!file_exists($fullPath)) {
+    if (file_exists($fullPath)) {
+        require_once $fullPath;
+        return true;
+    } else {
         return false;
     }
-
-    require_once $fullPath;
 }
