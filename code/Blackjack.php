@@ -23,13 +23,23 @@ class Blackjack
         $this->deck = $deck;
     }
 
-    public function getPlayer()
+    public function getPlayer(): Player
     {
         return $this->player;
     }
 
-    public function getDealer()
+    public function getDealer(): Dealer
     {
         return $this->dealer;
+    }
+
+    public function getDeck(): Deck
+    {
+        return $this->deck;
+    }
+
+    public function setDeck(Deck $deck): void
+    {
+        $this->deck = $deck;
     }
 }

@@ -21,27 +21,57 @@ class Player
         $this->deck = $deck;
     }
 
-    public function hit(Blackjack ): void
+    public function hit(Blackjack $game): void
     {
+        $deck = $game->getDeck();
+        $card = $deck->drawCard();
+        $game->setDeck($deck);
+        $this->setCard($card);
 
+        if ($this->getScore() > self::PLAYER_LIMIT) {
+            $this->setLost(true);
+        }
     }
 
-    //set lost to true
+    public function getCard(): array
+    {
+        $this->cards;
+    }
+
+    public function setCard(Card $card): array
+    {
+        $this->cards[] = [$card->getUnicodeCharacter(true), $card->getValue()];
+    }
+
+
+    //Surrender
     public function surrender(): void
     {
         $this->hasLost(true);
     }
 
-    public function getScore()
+    //player score
+    public function getScore(): int
     {
-
+        $playerCards = $this->getCard();
+        $score = 0;
+        foreach ($playerCards as $playerCard) {
+            $score += $playerCard->getValue();
+        }
+        return $score;
     }
-    //get lost property
+
+    //get hasLost property
     public function hasLost(): bool
     {
         return $this->lost;
     }
 
+    //set lost
+    public function setLost(bool $lost): void
+    {
+        $this->lost = $lost;
+    }
 
 
 }
