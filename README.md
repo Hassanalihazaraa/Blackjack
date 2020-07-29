@@ -2,7 +2,7 @@
 
 - Repository: `php-blackjack`
 - Type of Challenge: `Learning challenge`
-- Duration: `2 days`
+- Duration: `3 days`
 - Team challenge : `solo`
 
 ## Learning objectives
