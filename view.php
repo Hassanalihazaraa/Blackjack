@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+require_once 'index.php';
 /** @var Blackjack $game */
 ?>
 
@@ -13,12 +14,13 @@ declare(strict_types=1);
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 <div class="container-fluid">
     <div class="card-deck">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h5 class="card-title">Player</h5>
                 <?php
                 foreach ($game->getPlayer()->getCards() as $card) {
@@ -28,18 +30,18 @@ declare(strict_types=1);
             </div>
         </div>
         <div class="card">
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h5 class="card-title">Dealer</h5>
                 <?php
-                //foreach () {
-
-                //}
+                foreach ($game->getDealer()->getCards() as $card) {
+                    echo $card->getUnicodeCharacter(true);
+                }
                 ?>
             </div>
         </div>
     </div>
 </div>
-<form class="text-center mt-5" method="post" action="">
+<form class="text-center mt-5" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
     <button class="btn btn-info" name="newgame" value="new game" type="submit">New game</button>
     <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
     <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>

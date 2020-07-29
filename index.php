@@ -18,7 +18,7 @@ if (!isset($_SESSION['Blackjack'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //player
+//player
     if (isset($_POST['hit']) && $_POST['hit'] === 'hit') {
         $game->getPlayer()->hit($game);
         $_SESSION['Blackjack'] = serialize($game);
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //surrender
     if (isset($_POST['surrender']) && $_POST['surrender'] === 'surrender') {
         $game->getPlayer()->surrender();
-        unset($_SESSION['Blackjack']);
+        session_destroy();
     }
 }
 
