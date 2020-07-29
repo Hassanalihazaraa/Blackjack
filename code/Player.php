@@ -40,7 +40,7 @@ class Player
 
     public function setCard(Card $card): array
     {
-        $this->cards[] = $card;
+        $this->cards[] = [$card->getUnicodeCharacter(true), $card->getValue()];
         return $this->cards;
     }
 

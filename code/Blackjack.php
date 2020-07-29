@@ -45,8 +45,8 @@ class Blackjack
 
     public function gameplay(): void
     {
-        //if (){
+        if (!$this->getPlayer()->hasLost()) {
 
-        //}
+        }
     }
 }
