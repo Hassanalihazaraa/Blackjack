@@ -2,8 +2,8 @@
 
 - Repository: `php-blackjack`
 - Type of Challenge: `Learning challenge`
-- Duration: `2 days`
-- Team challenge : `solo`
+- Duration: `3 days`
+- Team challenge : `Duo`
 
 ## Learning objectives
 - A first dive into OOP (object oriented programming)
