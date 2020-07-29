@@ -10,7 +10,6 @@ require_once './code/Card.php';
 require_once './code/Deck.php';
 require_once './code/Suit.php';
 
-
 session_start();
 
 if (!isset($_SESSION['Blackjack'])) {
@@ -30,7 +29,6 @@ if (isset($_POST['hit']) && $_POST['hit'] === 'hit') {
         if ($game->getDealer()->getScore() < $game->getPlayer()->getScore()) {
             $game->getPlayer()->setLost(true);
             session_destroy();
-
         }
     }
 }
@@ -39,14 +37,12 @@ if (isset($_POST['stand']) && $_POST['stand'] === 'stand') {
     $game->getDealer()->hit($game);
     if ($game->getDealer()->hasLost()) {
         session_destroy();
-
     }
 }
 //surrender
 if (isset($_POST['surrender']) && $_POST['surrender'] === 'surrender') {
     $game->getPlayer()->surrender();
     session_destroy();
-
 }
 
 
