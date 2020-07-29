@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+//declare(strict_types=1);
 
 class Blackjack
 {
@@ -43,10 +43,8 @@ class Blackjack
         $this->deck = $deck;
     }
 
-    public function gameplay(): void
+    /*public function gameplay(): void
     {
-        if (!$this->getPlayer()->hasLost()) {
 
-        }
-    }
+    }*/
 }

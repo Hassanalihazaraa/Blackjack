@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+//declare(strict_types=1);
 
 class Player
 {
@@ -12,25 +12,30 @@ class Player
     {
         $this->cards[] = $deck->drawCard();
         $this->cards[] = $deck->drawCard();
-        /*
-        $deck = new Deck.class();
-        $deck->shuffle();
-
-        $this->player = new Player($deck);
-        $this->dealer = new Dealer($deck);
-        $this->deck = $deck;*/
     }
 
     public function hit(Blackjack $game): void
     {
         $deck = $game->getDeck();
         $card = $deck->drawCard();
-        $game->setDeck($deck);
         $this->setCard($card);
+        $game->setDeck($deck);
 
         if ($this->getScore() > self::PLAYER_LIMIT) {
             $this->setLost(true);
         }
+    }
+
+    //get hasLost property
+    public function hasLost(): bool
+    {
+        return $this->lost;
+    }
+
+    //set lost
+    public function setLost(bool $lost): void
+    {
+        $this->lost = $lost;
     }
 
     public function getCards(): array
@@ -40,7 +45,7 @@ class Player
 
     public function setCard(Card $card): array
     {
-        $this->cards[] = [$card->getUnicodeCharacter(true), $card->getValue()];
+        $this->cards[] = $card;//[$card->getUnicodeCharacter(true), $card->getValue()];
         return $this->cards;
     }
 
@@ -61,17 +66,7 @@ class Player
         return $score;
     }
 
-    //get hasLost property
-    public function hasLost(): bool
-    {
-        return $this->lost;
-    }
 
-    //set lost
-    public function setLost(bool $lost): void
-    {
-        $this->lost = $lost;
-    }
 }
 
 //Dealer
@@ -81,7 +76,7 @@ class Dealer extends Player
 
     public function hit(Blackjack $game): void
     {
-        if ($this->getScore() > self::DEALER_LIMIT) {
+        while($this->getScore() > self::DEALER_LIMIT) {
             parent::hit($game);
         }
     }

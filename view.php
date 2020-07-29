@@ -18,6 +18,16 @@ require_once 'index.php';
 </head>
 <body>
 <div class="container-fluid">
+    <?php
+    if ($game->getPlayer()->hasLost()) {
+        echo '<div class="alert alert-dark" role="alert">You lose!</div>';
+    }
+
+    if ($game->getDealer()->hasLost()) {
+        echo '<div class="alert alert-dark" role="alert">You win!</div>';
+    }
+    ?>
+
     <div class="card-deck">
         <div class="card">
             <div class="card-body text-center">
@@ -26,6 +36,7 @@ require_once 'index.php';
                 foreach ($game->getPlayer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
+                //var_dump($game->getPlayer()->getCards());
                 ?>
             </div>
         </div>
@@ -36,13 +47,16 @@ require_once 'index.php';
                 foreach ($game->getDealer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
+                //var_dump($game->getDealer()->getCards());
                 ?>
             </div>
         </div>
     </div>
 </div>
+
+
 <form class="text-center mt-5" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
-    <button class="btn btn-info" name="newgame" value="new game" type="submit">New game</button>
+    <!--<button class="btn btn-info" name="newgame" value="newgame" type="submit">New game</button>-->
     <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
     <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>
     <button class="btn btn-success" name="surrender" value="surrender" type="submit">Surrender</button>
