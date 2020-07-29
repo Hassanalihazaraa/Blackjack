@@ -12,6 +12,13 @@ class Player
     {
         $this->cards[] = $deck->drawCard();
         $this->cards[] = $deck->drawCard();
+        /*
+        $deck = new Deck();
+        $deck->shuffle();
+
+        $this->player = new Player($deck);
+        $this->dealer = new Dealer($deck);
+        $this->deck = $deck;*/
     }
 
     public function hit(Blackjack $game): void
@@ -65,8 +72,6 @@ class Player
     {
         $this->lost = $lost;
     }
-
-
 }
 
 class Dealer extends Player
