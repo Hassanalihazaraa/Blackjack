@@ -15,7 +15,7 @@ declare(strict_types=1);
             <div class="card-body">
                 <h5 class="card-title">Player</h5>
                 <?php
-                
+
                 foreach ($) {
 
                 }

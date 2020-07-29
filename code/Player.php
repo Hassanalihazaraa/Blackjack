@@ -35,12 +35,13 @@ class Player
 
     public function getCard(): array
     {
-        $this->cards;
+        return $this->cards;
     }
 
     public function setCard(Card $card): array
     {
         $this->cards[] = [$card->getUnicodeCharacter(true), $card->getValue()];
+        return $this->cards;
     }
 
 
@@ -53,7 +54,7 @@ class Player
     //player score
     public function getScore(): int
     {
-        $playerCards = $this->getCard();
+        $playerCards = $this->getCards();
         $score = 0;
         foreach ($playerCards as $playerCard) {
             $score += $playerCard->getValue();
@@ -73,6 +74,7 @@ class Player
         $this->lost = $lost;
     }
 }
+
 //Dealer
 class Dealer extends Player
 {
