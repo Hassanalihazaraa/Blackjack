@@ -14,7 +14,7 @@ class Suit
     private const CHAR_CLUB = 127184;
 
     /** @var string */
-    private $name;
+    private string $name;
 
     private function __construct(string $name) {
         $this->name = $name;

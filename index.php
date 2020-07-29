@@ -13,7 +13,7 @@ if (!isset($_SESSION['Blackjack'])) {
     $game = new Blackjack();
     $_SESSION['Blackjack'] = serialize($game);
 } else {
-    $game = unserialize($_SESSION['Blackjack']);
+    $game = unserialize($_SESSION['Blackjack'], [Blackjack::class]);
 }
 
 ?>
