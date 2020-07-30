@@ -34,7 +34,7 @@ require_once 'index.php';
     <div class="card-deck">
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="card-title">Player</h5>
+                <h5 class="card-title">Player score: <?php echo $game->getPlayer()->getScore() ?></h5>
                 <?php
                 foreach ($game->getPlayer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
@@ -45,7 +45,7 @@ require_once 'index.php';
         </div>
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="card-title">Dealer</h5>
+                <h5 class="card-title">Dealer score: <?php echo $game->getDealer()->getScore() ?></h5>
                 <?php
                 foreach ($game->getDealer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
@@ -58,8 +58,8 @@ require_once 'index.php';
 </div>
 
 
-<form class="text-center mt-5" method="post" action="<?= htmlspecialchars($_SERVER['PHP_SELF']) ?>">
-    <!--<button class="btn btn-info" name="newgame" value="newgame" type="submit">New game</button>-->
+<form class="text-center mt-5" method="post" action="">
+    <button class="btn btn-info" name="nGame" value="nGame" type="submit">New game</button>
     <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
     <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>
     <button class="btn btn-success" name="surrender" value="surrender" type="submit">Surrender</button>

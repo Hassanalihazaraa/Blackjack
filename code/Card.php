@@ -13,7 +13,7 @@ class Card
     private $suit;
 
     /** @var int */
-    private $value;
+    private int $value;
 
     public function __construct(Suit $suit, int $value)
     {
@@ -26,7 +26,7 @@ class Card
         return $this->suit;
     }
 
-    public function getValue()
+    public function getValue(): int
     {
         if ($this->value === 1) {
             return self::ACE_VALUE;

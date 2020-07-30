@@ -18,22 +18,28 @@ if (!isset($_SESSION['Blackjack'])) {
 } else {
     $game = unserialize($_SESSION['Blackjack'], [Blackjack::class]);
 }
+//New game
+if (isset($_POST['nGame'])) {
+    session_destroy();
+}
 
 //player
-if (isset($_POST['hit']) && $_POST['hit'] === 'hit') {
+if (isset($_POST['hit'])) {
     $game->getPlayer()->hit($game);
     if ($game->getPlayer()->hasLost()) {
-        session_destroy();
+        unset($_SESSION['Blackjack']);
     }
 }
+
 //stand
 if (isset($_POST['stand']) && $_POST['stand'] === 'stand') {
     $game->getDealer()->hit($game);
     $game->Game();
     if ($game->getDealer()->hasLost()) {
-        session_destroy();
+        unset($_SESSION['Blackjack']);
     }
 }
+
 //surrender
 if (isset($_POST['surrender']) && $_POST['surrender'] === 'surrender') {
     $game->getPlayer()->surrender();
