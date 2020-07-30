@@ -10,19 +10,25 @@ require_once './code/Card.php';
 require_once './code/Deck.php';
 require_once './code/Suit.php';
 
-session_start();
+if (!isset($_SESSION['Blackjack'])) {
+    session_start();
+}
 
 if (!isset($_SESSION['Blackjack'])) {
     $_SESSION['Blackjack'] = new Blackjack();
 }
 //New game
-if (isset($_POST['nGame'])) {
-    session_destroy();
+if (isset($_POST['newGame'])) {
+    if (isset($_SESSION['Blackjack'])) {
+        session_destroy();
+        session_start();
+        $_SESSION['Blackjack'] = new Blackjack();
+    }
 }
 
 //player
 if (isset($_POST['hit'])) {
-    $_SESSION['Blackjack']->getPlayer()->hit($_SESSION['Blackjack']);
+    $_SESSION['Blackjack']->getPlayer()->hit();
     if ($_SESSION['Blackjack']->getPlayer()->hasLost()) {
         session_destroy();
     }
@@ -31,9 +37,14 @@ if (isset($_POST['hit'])) {
 //stand
 if (isset($_POST['stand'])) {
     $_SESSION['Blackjack']->getDealer()->hit($_SESSION['Blackjack']);
-    $_SESSION['Blackjack']->Game();
-    if ($_SESSION['Blackjack']->getDealer()->hasLost()) {
-        session_destroy();
+    if (!$_SESSION['Blackjack']->getPlayer()->hasLost() && !$_SESSION['Blackjack']->getDealer()->hasLost()) {
+        if ($_SESSION['Blackjack']->getDealer()->getScore() < $_SESSION['Blackjack']->getPlayer()->getScore()) {
+            $_SESSION['Blackjack']->getDealer()->setLost(true);
+            session_destroy();
+        } else {
+            $_SESSION['Blackjack']->getPlayer()->setLost(true);
+            session_destroy();
+        }
     }
 }
 

@@ -18,12 +18,12 @@ class Player
     }
 
     //hit method
-    public function hit(Blackjack $game): void
+    public function hit(): void
     {
-        $deck = $game->getDeck();
+        $deck = $_SESSION['Blackjack']->getDeck();
         $card = $deck->drawCard();
         $this->setCard($card);
-        $game->setDeck($deck);
+        //$_SESSION['Blackjack']->setDeck($deck);
 
         if ($this->getScore() > self::PLAYER_LIMIT) {
             $this->setLost(true);
@@ -51,7 +51,7 @@ class Player
     //setting card from the Card class
     public function setCard(Card $card): array
     {
-        $this->cards[] = $card;//[$card->getUnicodeCharacter(true), $card->getValue()];
+        $this->cards[] = $card;
         return $this->cards;
     }
 
@@ -79,10 +79,10 @@ class Dealer extends Player
     const DEALER_LIMIT = 15;
 
     //getting the dealer score when hit
-    public function hit(Blackjack $game): void
+    public function hit(): void
     {
         while ($this->getScore() < self::DEALER_LIMIT) {
-            parent::hit($game);
+            parent::hit();
         }
     }
 
