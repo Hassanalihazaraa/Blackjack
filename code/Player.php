@@ -23,7 +23,7 @@ class Player
         $deck = $_SESSION['Blackjack']->getDeck();
         $card = $deck->drawCard();
         $this->setCard($card);
-        //$_SESSION['Blackjack']->setDeck($deck);
+        $_SESSION['Blackjack']->setDeck($deck);
 
         if ($this->getScore() > self::PLAYER_LIMIT) {
             $this->setLost(true);
