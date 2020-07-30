@@ -13,10 +13,7 @@ require_once './code/Suit.php';
 session_start();
 
 if (!isset($_SESSION['Blackjack'])) {
-    $game = new Blackjack();
-    $_SESSION['Blackjack'] = serialize($game);
-} else {
-    $game = unserialize($_SESSION['Blackjack'], [Blackjack::class]);
+    $_SESSION['Blackjack'] = new Blackjack();
 }
 //New game
 if (isset($_POST['nGame'])) {
@@ -25,24 +22,24 @@ if (isset($_POST['nGame'])) {
 
 //player
 if (isset($_POST['hit'])) {
-    $game->getPlayer()->hit($game);
-    if ($game->getPlayer()->hasLost()) {
-        unset($_SESSION['Blackjack']);
+    $_SESSION['Blackjack']->getPlayer()->hit($_SESSION['Blackjack']);
+    if ($_SESSION['Blackjack']->getPlayer()->hasLost()) {
+        session_destroy();
     }
 }
 
 //stand
-if (isset($_POST['stand']) && $_POST['stand'] === 'stand') {
-    $game->getDealer()->hit($game);
-    $game->Game();
-    if ($game->getDealer()->hasLost()) {
-        unset($_SESSION['Blackjack']);
+if (isset($_POST['stand'])) {
+    $_SESSION['Blackjack']->getDealer()->hit($_SESSION['Blackjack']);
+    $_SESSION['Blackjack']->Game();
+    if ($_SESSION['Blackjack']->getDealer()->hasLost()) {
+        session_destroy();
     }
 }
 
 //surrender
-if (isset($_POST['surrender']) && $_POST['surrender'] === 'surrender') {
-    $game->getPlayer()->surrender();
+if (isset($_POST['surrender'])) {
+    $_SESSION['Blackjack']->getPlayer()->surrender();
     session_destroy();
 }
 

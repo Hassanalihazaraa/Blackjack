@@ -71,8 +71,6 @@ class Player
         }
         return $score;
     }
-
-
 }
 
 //Dealer class

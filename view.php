@@ -5,7 +5,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 require_once 'index.php';
-/** @var Blackjack $game */
+/** @var Blackjack $_Session['Blackjack'] */
 ?>
 
 <!doctype html>
@@ -22,11 +22,11 @@ require_once 'index.php';
 <body>
 <div class="container-fluid">
     <?php
-    if ($game->getPlayer()->hasLost()) {
+    if ($_SESSION['Blackjack']->getPlayer()->hasLost()) {
         echo '<div class="alert alert-dark" role="alert">You lose!</div>';
     }
 
-    if ($game->getDealer()->hasLost()) {
+    if ($_SESSION['Blackjack']->getDealer()->hasLost()) {
         echo '<div class="alert alert-dark" role="alert">You win!</div>';
     }
     ?>
@@ -34,9 +34,9 @@ require_once 'index.php';
     <div class="card-deck">
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="card-title">Player score: <?php echo $game->getPlayer()->getScore() ?></h5>
+                <h5 class="card-title">Player score: <?php echo $_SESSION['Blackjack']->getPlayer()->getScore() ?></h5>
                 <?php
-                foreach ($game->getPlayer()->getCards() as $card) {
+                foreach ($_SESSION['Blackjack']->getPlayer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
                 //var_dump($game->getPlayer()->getCards());
@@ -45,9 +45,9 @@ require_once 'index.php';
         </div>
         <div class="card">
             <div class="card-body text-center">
-                <h5 class="card-title">Dealer score: <?php echo $game->getDealer()->getScore() ?></h5>
+                <h5 class="card-title">Dealer score: <?php echo $_SESSION['Blackjack']->getDealer()->getScore() ?></h5>
                 <?php
-                foreach ($game->getDealer()->getCards() as $card) {
+                foreach ($_SESSION['Blackjack']->getDealer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
                 //var_dump($game->getDealer()->getCards());
@@ -58,7 +58,7 @@ require_once 'index.php';
 </div>
 
 
-<form class="text-center mt-5" method="post" action="">
+<form class="text-center mt-5" method="post" action="index.php">
     <button class="btn btn-info" name="nGame" value="nGame" type="submit">New game</button>
     <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
     <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>
