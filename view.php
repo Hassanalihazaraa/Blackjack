@@ -53,7 +53,7 @@ error_reporting(E_ALL);
 </div>
 
 
-<form class="text-center mt-5" method="post" action="index.php">
+<form class="text-center mt-5" method="post" action="">
     <button class="btn btn-info" name="newGame" value="newGame" type="submit">New game</button>
     <button class="btn btn-primary" name="hit" value="hit" type="submit">Hit</button>
     <button class="btn btn-danger" name="stand" value="stand" type="submit">Stand</button>
