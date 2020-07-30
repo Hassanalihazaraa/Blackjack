@@ -3,8 +3,6 @@ declare(strict_types=1);
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
-
-/** @var Blackjack $_Session ['Blackjack'] */
 ?>
 
 <!doctype html>
@@ -38,7 +36,6 @@ error_reporting(E_ALL);
                 foreach ($_SESSION['Blackjack']->getPlayer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
-                //var_dump($_SESSION['Blackjack']->getPlayer()->getCards());
                 ?>
             </div>
         </div>
@@ -49,7 +46,6 @@ error_reporting(E_ALL);
                 foreach ($_SESSION['Blackjack']->getDealer()->getCards() as $card) {
                     echo $card->getUnicodeCharacter(true);
                 }
-                //var_dump($_SESSION['Blackjack']->getDealer()->getCards());
                 ?>
             </div>
         </div>
@@ -76,4 +72,3 @@ error_reporting(E_ALL);
         crossorigin="anonymous"></script>
 </body>
 </html>
-
