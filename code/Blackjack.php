@@ -51,8 +51,16 @@ class Blackjack
         $this->deck = $deck;
     }
 
-    /*public function gameplay(): void
-    {
 
-    }*/
+    public function Game()
+    {
+        if (!$this->getPlayer()->hasLost() && !$this->getDealer()->hasLost()) {
+            if ($this->getDealer()->getScore() < $this->getPlayer()->getScore()) {
+                $this->getDealer()->setLost(true);
+            } elseif ($this->getPlayer()->getScore() < $this->getDealer()->getScore()) {
+                $this->getPlayer()->setLost(true);
+            }
+        }
+    }
+
 }

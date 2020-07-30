@@ -22,19 +22,15 @@ if (!isset($_SESSION['Blackjack'])) {
 //player
 if (isset($_POST['hit']) && $_POST['hit'] === 'hit') {
     $game->getPlayer()->hit($game);
+    $game->Game();
     if ($game->getPlayer()->hasLost()) {
-        $game->getPlayer()->setLost(true);
         session_destroy();
-    } else {
-        if ($game->getDealer()->getScore() < $game->getPlayer()->getScore()) {
-            $game->getPlayer()->setLost(true);
-            session_destroy();
-        }
     }
 }
 //stand
 if (isset($_POST['stand']) && $_POST['stand'] === 'stand') {
     $game->getDealer()->hit($game);
+    $game->Game();
     if ($game->getDealer()->hasLost()) {
         session_destroy();
     }
