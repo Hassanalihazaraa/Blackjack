@@ -22,7 +22,6 @@ if (!isset($_SESSION['Blackjack'])) {
 //player
 if (isset($_POST['hit']) && $_POST['hit'] === 'hit') {
     $game->getPlayer()->hit($game);
-    $game->Game();
     if ($game->getPlayer()->hasLost()) {
         session_destroy();
     }

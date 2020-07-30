@@ -83,7 +83,7 @@ class Dealer extends Player
     //getting the dealer score when hit
     public function hit(Blackjack $game): void
     {
-        while ($this->getScore() <= self::DEALER_LIMIT) {
+        while ($this->getScore() < self::DEALER_LIMIT) {
             parent::hit($game);
         }
     }
